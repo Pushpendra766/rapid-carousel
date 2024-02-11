@@ -1,6 +1,6 @@
 {
   "name": "rapid-carousel",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Carousel library.",
   "main": "dist/cjs/index.js",
   "files": [
