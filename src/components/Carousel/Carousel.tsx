@@ -3,11 +3,17 @@ import "./Carousel.style.css";
 
 interface Props {
   numberOfSlides: number;
-  imageData: Array<string>;
+  imageData: string[];
   showNavDots: boolean;
+  customImageStyles: object;
 }
 
-const Carousel: FC<Props> = ({ numberOfSlides, imageData, showNavDots }) => {
+const Carousel: FC<Props> = ({
+  imageData = [],
+  numberOfSlides = 3,
+  showNavDots = true,
+  customImageStyles = {},
+}) => {
   const imageElements = useMemo(
     () =>
       imageData.map((imgUrl) => {
@@ -16,7 +22,8 @@ const Carousel: FC<Props> = ({ numberOfSlides, imageData, showNavDots }) => {
             src={imgUrl}
             alt="Carousel Image"
             key={imgUrl}
-            className="w-40 h-40 object-cover rounded-md"
+            className="image"
+            style={customImageStyles}
           />
         );
       }),
@@ -63,6 +70,14 @@ const Carousel: FC<Props> = ({ numberOfSlides, imageData, showNavDots }) => {
     calculateRange(0);
   }, []);
 
+  if (imageData.length === 0) {
+    return (
+      <p>
+        Please pass images data, via{" "}
+        <span style={{ fontWeight: 700 }}>imagesData</span> variable.
+      </p>
+    );
+  }
   return (
     <div className="carousel-container">
       <button

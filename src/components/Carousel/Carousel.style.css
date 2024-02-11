@@ -30,6 +30,13 @@
   gap: 0.5rem;
 }
 
+.image {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 0.375rem;
+}
+
 .nav-dots-container {
   display: flex;
   gap: 0.5rem;
