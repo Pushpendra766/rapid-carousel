@@ -1,0 +1,56 @@
+.nav-btn {
+  background-color: #e5e7eb;
+  height: 35px;
+  width: 35px;
+  border-radius: 17.5px;
+  padding: 5px;
+}
+
+.nav-btn:focus {
+  outline: none;
+}
+
+.nav-btn-svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mb--7 {
+  margin-bottom: 35px;
+}
+
+.carousel-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-dots-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  justify-content: center;
+}
+
+.nav-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  cursor: pointer;
+  border-radius: 9999px;
+  margin-top: 0.5rem;
+}
+
+.dark-dot {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+
+.light-dot {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
