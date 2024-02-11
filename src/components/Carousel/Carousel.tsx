@@ -2,36 +2,56 @@ import React, { useEffect, useState, useMemo, FC } from "react";
 import "./Carousel.style.css";
 
 interface Props {
+  imageData: string[];
   numberOfSlides: number;
-  imageData: Array<string>;
   showNavDots: boolean;
+  customImageStyles: object;
 }
 
-const Carousel: FC<Props> = ({ numberOfSlides, imageData, showNavDots }) => {
+const Carousel: FC<Props> = ({
+  imageData = [],
+  numberOfSlides = 3,
+  showNavDots = true,
+  customImageStyles = {},
+}) => {
+  const filteredImageData = [...new Set(imageData)];
+  if (filteredImageData.length === 0) {
+    return (
+      <p>
+        Please pass images data, via{" "}
+        <span style={{ fontWeight: 700 }}>imagesData</span> variable.
+      </p>
+    );
+  }
+  const slidesToDisplay =
+    numberOfSlides <= filteredImageData.length
+      ? numberOfSlides
+      : filteredImageData.length;
   const imageElements = useMemo(
     () =>
-      imageData.map((imgUrl) => {
+      filteredImageData.map((imgUrl) => {
         return (
           <img
             src={imgUrl}
             alt="Carousel Image"
             key={imgUrl}
-            className="w-40 h-40 object-cover rounded-md"
+            className="image"
+            style={customImageStyles}
           />
         );
       }),
-    [imageData]
+    [filteredImageData]
   );
   const [currentIdx, setCurrentIdx] = useState(0);
   const [currentRange, setCurrentRange] = useState(
-    Array(numberOfSlides)
+    Array(slidesToDisplay)
       .fill(1)
       .map((_, idx) => idx)
   );
   const calculateRange = (currIdx: number) => {
     const newRange = [];
-    for (let i = 0; i < numberOfSlides; i++) {
-      const idx = currIdx - Math.trunc(numberOfSlides / 2) + i;
+    for (let i = 0; i < slidesToDisplay; i++) {
+      const idx = currIdx - Math.trunc(slidesToDisplay / 2) + i;
       newRange.push(filterIndex(idx));
     }
     setCurrentRange(newRange);
@@ -53,9 +73,9 @@ const Carousel: FC<Props> = ({ numberOfSlides, imageData, showNavDots }) => {
 
   const filterIndex = (idx: number) => {
     if (idx < 0) {
-      return imageData.length + idx;
-    } else if (idx >= imageData.length) {
-      return idx % imageData.length;
+      return filteredImageData.length + idx;
+    } else if (idx >= filteredImageData.length) {
+      return idx % filteredImageData.length;
     }
     return idx;
   };
@@ -98,7 +118,7 @@ const Carousel: FC<Props> = ({ numberOfSlides, imageData, showNavDots }) => {
         </div>
         {showNavDots && (
           <div className="nav-dots-container">
-            {imageData.map((imgUrl, idx) => (
+            {filteredImageData.map((imgUrl, idx) => (
               <div
                 key={imgUrl}
                 onClick={() => handleNavDotClick(idx)}
