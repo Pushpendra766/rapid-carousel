@@ -5,7 +5,7 @@ A simple and customizable carousel component for your next project.
 ## Demo
 >Note:- GIF may take some time to load.
 
-![](https://github.com/Pushpendra766/rapid-carousel/blob/main/src/assets/demo.gif)
+![](https://github.com/Pushpendra766/rapid-carousel/blob/main/src/assets/demo-gif.gif)
 
 ## Installation
 
