@@ -2,8 +2,6 @@
 
 A simple and fully customizable Carousel component for your next project.
 
-[![CircleCI](https://circleci.com/gh/antony/github-backup.svg?style=shield)](https://circleci.com/gh/antony/rollup-plugin-svg) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
 ## Installation
 
 ```bash
@@ -14,6 +12,8 @@ npm i -D rapid-carousel
 
 ```js
 import {Carousel} from 'rapid-carousel'
+
+const imageData=["url_to_image","url_to_image","url_to_image",];
 
 function App() {
   return (
@@ -30,10 +30,14 @@ function App() {
 
 You can then use svgs in your bundle thusly:
 
-## Options:
+## Arguments:
+| Name of Argument | Type   | Required/Optional | Description                               |
+|------------------|--------|-------------------|-------------------------------------------|
+| `imageData`       | Array of string | Required         | It is an array that stores the urls or paths to images to be included in the carousel.        |
+| `numberOfSlides`  | Number | Required         | It describes the number of slides to display.      |
+| `showNavDots`     | Boolean| Required         | It describes whether to show navigation dots at bottom.        |
 
 
 
-## License
 
-MIT
+### Made with ❤️ by Pushpendra Chandravanshi.
